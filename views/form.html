@@ -1,0 +1,55 @@
+<!--
+In this template, I've added a few more Bootstrap styles to make it a little more visual.  All of these styles come with Bootstrap right out of the box.  Feel free to explore http://getbootstrap.com to learn more about what Bootstrap has to offer.
+-->
+
+<h1>Input Form</h1>
+<hr/>
+<p class="lead text-muted">This is a form that we'll use to demonstrate input reactivity.  Each input is tied to a display value that reflects what you put into the form.  If there is nothing in the form, nothing is displayed.  Fancy, no?  Let's have a go!</p>
+<p>You may have noticed, if you've examined the <code>app.js</code> file carefully, that I've applied the <code>listCtrl</code> Controller to this view.  That's perfectly legal.  If there were a lot of crossover between the two of them, I might see a lot of benefit in that.  Just be careful - if you look in the console, you'll see that the List data was loaded from the backend.  You don't want to overload your wire with too many unused API calls!</p>
+<hr/>
+<div class="row">
+    <div class="col-sm-6">
+        <!--In each of these inputs, the ng-model dictates the Angular scope variable that stores the input data.-->
+        <fieldset>
+            <label class="control-label" for="name">
+                Name
+            </label>
+            <input type="text"
+                   ng-model="name"
+                   id="name"
+                   class="form-control"/>
+            <hr/>
+            <label class="control-label" for="occupation">
+                Occupation
+            </label>
+            <input type="text"
+                   id="occupation"
+                   ng-model="occupation"
+                   class="form-control"/>
+            <hr/>
+            <label class="control-label" for="education">
+                Highest Completed Degree
+            </label>
+            <input type="text"
+                   id="education"
+                   ng-model="education"
+                   class="form-control"/>
+        </fieldset>
+    </div>
+
+    <!--Here, we'll use that input data from above by referencing those ng-models!-->
+    <div class="col-sm-5 col-sm-push-1">
+        <!--That's a big if!  Think of a way to slim it down if you can!-->
+        <div class="panel panel-success" ng-if="name || occupation || education">
+            <div class="panel-heading">
+                <h3 class="panel-title">Your Input</h3>
+            </div>
+            <div class="panel-body">
+                <!--Each of these will only display if the corresponding input has data-->
+                <p class="lead" ng-if="name">Your name is {{name}}</p>
+                <p class="lead" ng-if="occupation">Your job is {{occupation}}</p>
+                <p class="lead" ng-if="education">You've completed your {{education}}</p>
+            </div>
+        </div>
+    </div>
+</div>

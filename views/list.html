@@ -1,0 +1,24 @@
+<!--
+This page is going to be a bit more complicated than the Home page.  But since it starts off with some basic introductory data, we can still call a re-usable include to display some generic content.
+
+Notice that even though it's the same template, the data in the template is different.  That's because the data comes from a different source in the backend.
+-->
+<div ng-include="'/views/content.html'"></div>
+<!--
+Now we'll build our list display.  This will loop through the data items we have in a JS array, and display them each in a re-usable template.  Once we enter the loop, the scope of the document changes by stepping down into the loop itself.
+-->
+<div ng-repeat="item in page.data track by $index">
+    <hr/>
+    <div class="row">
+        <!--This div will take up 8 of 12 columns in the grid, for any screen larger than the 'sm' breakpoint -->
+        <div class="col-sm-8">
+            <h3>{{item.title}}</h3>
+            <p>{{item.description}}</p>
+        </div>
+        <!--This div will take up 4 of 12 columns in the grid, for any screen larger than the 'sm' breakpoint -->
+        <div class="col-sm-4">
+            <!--Notice we can pass the item ID through an Angular template tag in order to build the link URL-->
+            <a class="btn btn-sm btn-default pull-right" href="#/{{item.id}}">View More</a>
+        </div>
+    </div>
+</div>

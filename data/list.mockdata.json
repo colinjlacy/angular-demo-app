@@ -1,0 +1,21 @@
+{
+  "pageTitle": "List View",
+  "description": "The purpose of this view is to demonstrate how to loop through a list of objects in Angular.  Data is passed to the client, and Angular repeats over the data array, setting an internal scope for each item.",
+  "data": [
+    {
+      "id": 1,
+      "title": "Item 1",
+      "description": "This is the first item in this list."
+    },
+    {
+      "id": 2,
+      "title": "Item 2",
+      "description": "This is the second item in this list."
+    },
+    {
+      "id": 3,
+      "title": "Item 3",
+      "description": "This is the third and last item in this list."
+    }
+  ]
+}

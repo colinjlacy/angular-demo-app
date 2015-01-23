@@ -1,0 +1,33 @@
+<hr/>
+<!--
+This is the template for individual items in the list view. It uses the itemCtrl Controller, and as you'll see, $scope.item is set by making an API call to the database using the URL passed to the browser.  Since each item has different information, we have to be careful to plan ahead when building this template.  Each addition section has an ng-if attribute, meaning it won't be added to the DOM if the page doesn't contain the data necessary to display that seciton.
+-->
+<div class="row">
+    <div class="col-sm-8">
+        <h1>{{item.title}}</h1>
+    </div>
+    <div class="col-sm-4">
+        <a href="#/list" class="btn btn-sm btn-default pull-right">Back to List</a>
+    </div>
+</div>
+
+<hr/>
+
+<p>{{item.description}}</p>
+
+<!--This conditional checks to see if there's an 'info' property in the data object that's passed to the template.  If so, it'll add the folloing markup to the DOM.-->
+<div ng-if="item.info">
+    <hr/>
+    <h3>Additional Info</h3>
+    <ul>
+        <li ng-repeat="listItem in item.info track by $index">{{listItem}}</li>
+    </ul>
+</div>
+
+<!--This conditional checks to see if the scope function returns true.  You can get pretty creative when you pass functions to conditionals in Angular-->
+<div ng-if="isChild(item)">
+    <hr/>
+    <p>
+        <strong>Note: this item is a child of item {{item.parent}}</strong>
+    </p>
+</div>

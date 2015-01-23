@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app="nolaTraining">
+<head>
+    <title>NOLA Training</title>
+
+    <!--meta tags-->
+    <meta charset="utf-8">
+    <base href="./">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--css-->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+
+</head>
+<body ng-controller="initCrtrl">
+<!--
+The following three elements are wrapped in some Bootstrap 3 classes.  They create the responsive layout of your application.
+
+The first class sets the fixed maximum width of the application content.  As the screen gets larger or smaller, this will adjust the content appropriately.  Bet you didn't think responsive design would be this easy!  Thank Bootstrap for that.
+-->
+<div class="container">
+    <!--
+    The "row" sets the block-level element that takes up the fill width of the container.  Think of the row as the wrapper for the twelve-column grid.  As you can imagine, you'll have to fill it with items that add up to twelve columns.
+    -->
+    <div class="row">
+        <!--
+        Notice that this div takes up 12 columns.  Easy enough.  It'll go the full width of the wrapper.  It takes up all twelve columns in the row.
+
+        If you're not familiar yet, the "-sm-" refers to the breakpoint at which the content of the div will resize from however many columns are set, to a full-width vertical stack.  This is a bad example since it already takes up the full width.  However in Bootstrap, you'll need to set a class that fits into the grid system.
+        -->
+        <div class="col-sm-12">
+            <!--
+            This next block will act as the navigation for the application.  Notice it's nothing special.
+
+            What you might take a look at is the ng-class attribute.  It passes a class that may or may not be applied to the element.  The contents of the attribute is a javascript object, where the key is the class, and the value is the conditions under which the class is applied.
+
+            If you look in the app.js file, you'll find this getPage() function in the initCtrl Controller.  That should give you an idea as to what this ng-class conditional does.
+            -->
+            <ul class="nav nav-pills">
+                <li role="presentation" ng-class="{active: getPage('/')}"><a href="#/">Home</a></li>
+                <li role="presentation" ng-class="{active: getPage('/list')}"><a href="#/list">List View</a></li>
+                <li role="presentation" ng-class="{active: getPage('/form')}"><a href="#/form">Form View</a></li>
+            </ul>
+        <div class="col-sm-12">
+            <!--
+            The next element isn't an element.  It's an Angular directive.  Specifically, it's Angular's way of using the router to decide what to display.  Keep in mind, Angular is a framework for making Single-Page Applications.  This, index.html, is your single page.  Therefore, everything has to operate out of this file.  ng-view makes that happen using ngRouter, an Angular module that is included in this application.
+            -->
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>
+
+
+<!--application js-->
+<script src="lib/jquery-1.11.2.min.js"></script>
+<script src="lib/bootstrap.js"></script>
+
+<!--angular libraries-->
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-route.min.js"></script>
+
+<!--angular application stuff-->
+<script src="js/app.js"></script>
+<script src="js/apiSrvc.js"></script>
+
+</body>
+</html>
